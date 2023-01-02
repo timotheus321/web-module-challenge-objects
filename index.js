@@ -16,9 +16,11 @@ The function should:
 */
 
 
-function createMenuItem(/*Your code here*/){
-  /*Your code here*/
+function createMenuItem(name, price, category){
+  const createMenuItem = {name, price, category};
+  return createMenuItem;
 }
+console.log('task1a:', createMenuItem("bibimbap", 10, "lunch"));
 
 
 
@@ -30,8 +32,15 @@ Test your createMenuItems function by doing the following:
   3. Log each returned object to the console  
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
-*/
 
+*/
+const steak = createMenuItem("steak", 20, "dinner");
+const jajangmyeun = createMenuItem("jajangmyeun", 8, "lunch");
+const bulgogi = createMenuItem("bulgogi", 12, "dinner");
+
+console.log(steak);
+console.log(bulgogi);
+console.log(jajangmyeun);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -50,9 +59,19 @@ Using the burger object below do the following:
 const burger = {
   name: "Burger", 
   price: 18, 
-  category: "Lunch", 
+  category: "Lunch",
+  discount: function(person){
+    if (person === 'teacher' || person === 'student'){
+      return this.price - (this.price * .25);
+    }else if(person === 'public'){
+      return this.price - (this.price * .10);
+    }else{ "no discount for you"};
+  }
+  };
+
+  console.log('task 2:', burger.discount('teacher'));
   
-}
+
 
 
 
@@ -72,7 +91,7 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
-
+console.log('task 3:', reviews[5].feedback);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 (not auto-tested): 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -80,6 +99,8 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
+console.log('task 4:', reviews[7].feedback);
 
 
 
@@ -95,10 +116,12 @@ Use the addReview function below to do the following:
 */
 
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(reviews, name, rating, feedback){
+  const newReview = { name, rating, feedback};
+  reviews.push(newReview);
+  return reviews;
 }
-
+console.log('task 5:', addReview(reviews, 'Robert', 4, 'Food Rocks!'));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -112,9 +135,11 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(reviews, index) {
+  const review = reviews[index];
+  return `${review.name} gave the restaurant a ${review.rating} star review, and their feedback was: ${review.feedback}`;
 }
+console.log('task 6:', getReviewByIndex(reviews, 0));
 
   
 
@@ -131,11 +156,13 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(reviews) {
+  const lastIndex = reviews.length -1;
+  const review = reviews[lastIndex];
+  return `${review.name} gave the restaurant a ${review.rating} star review, and their feedback was: ${review.feedback}`;
 } 
 
-
+console.log('task 7:', getLastReview(reviews));
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
 
